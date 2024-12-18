@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p align="center">
+        <h1 align="center" style="color: DarkSlateGrey;">Хотите узнать погоду?</h1>
+    </p>
+    <hr size=5 color=LightSeaGreen>
+</head>
+<body bgcolor=LightCyan text="DarkSlateGrey">
+    <h2 align="center">Выберите свой город</h2>
+     <form method="post" align="center">
+        {% csrf_token %}
+         <input type="text" id="city" name="city" maxlength="30" required placeholder="Например: Сочи" align="middle">
+         <button type="submit" class="button is-info">
+             Ok
+         </button>
+    </form>
+    <p >
+        <h1 align="center" style="color: FireBrick;">
+        <br>{{city}}</h1>
+        <article class="media" align="center">
+                <div class="media-left">
+                    <figure class="image is-1000x1000">
+                        <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Image">
+                    </figure>
+                </div>
+        </article>
+        <h2 align="center">
+            {{description}}
+            <br>Температура: {{temperature}} °C
+            <br>Ощущается как: {{temperature_feels}} °C
+            <br>Влажность: {{humidity}} %
+            <br>Видимость: {{visibility}} км
+        </h2>
+    </p>
+</body>
+</html>

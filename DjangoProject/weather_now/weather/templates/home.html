@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p align="center">
+        <h1 align="center" style="color: DarkSlateGrey;">Хотите узнать погоду?</h1>
+    </p>
+    <hr size=5 color=LightSeaGreen>
+</head>
+<body bgcolor=LightCyan text="DarkSlateGrey">
+    <h2 align="center">Выберите свой город</h2>
+     <form method="post" align="center">
+        {% csrf_token %}
+         <input type="text" id="city" name="city" maxlength="30" required placeholder="Например: Сочи" align="middle">
+         <button type="submit" class="button is-info">
+             Ok
+         </button>
+    </form>
+</body>
+</html>
