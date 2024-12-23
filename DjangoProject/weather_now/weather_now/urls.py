@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from weather.views import getter
+from weather.views import getter, delete, delete_all
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', getter),
+    path("delete_all/", delete_all),
+    path("delete/<int:city_id>/", delete),
 ]

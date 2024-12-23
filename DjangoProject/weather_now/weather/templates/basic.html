@@ -18,22 +18,39 @@
          </button>
     </form>
     <p >
-        <h1 align="center" style="color: FireBrick;">
-        <br>{{city}}</h1>
+        <h3 align="center" style="color: FireBrick;">
+        <br>{{data.city}}</h3>
         <article class="media" align="center">
                 <div class="media-left">
-                    <figure class="image is-1000x1000">
-                        <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="Image">
+                    <figure class="image is-50x50">
+                        <img src="http://openweathermap.org/img/w/{{ data.icon }}.png" alt="Image" width="75" height="75">
                     </figure>
                 </div>
         </article>
-        <h2 align="center">
-            {{description}}
-            <br>Температура: {{temperature}} °C
-            <br>Ощущается как: {{temperature_feels}} °C
-            <br>Влажность: {{humidity}} %
-            <br>Видимость: {{visibility}} км
-        </h2>
+        <h3 align="center">
+            {{data.description}}
+            <br>Температура: {{data.temperature}} °C
+            <br>Ощущается как: {{data.temperature_feels}} °C
+            <br>Влажность: {{data.humidity}} %
+            <br>Видимость: {{data.visibility}} км
+        </h3>
     </p>
+    {% if city_info.count > 0 %}
+        <h2>История запросов</h2>
+        <td><a href="delete_all">Очистить все</a></td>
+        <table>
+            {% for city in city_info %}
+            <tr>
+                <td>{{ city.name }}</td>
+                <td>{{ city.temperature }}</td>
+                <td>{{ city.description }}</td>
+                <td><div class="media-left">
+                        <img src="http://openweathermap.org/img/w/{{ city.icon }}.png" alt="Image" width="30" height="30">
+                </div></td>
+                <td><a href="delete/{{city.id}}">Удалить</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 </body>
 </html>
